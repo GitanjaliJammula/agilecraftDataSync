@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>regions</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 500px;
+        }
+        center {
+            margin-left:auto;
+            margin-right:auto;
+        }
+    </style>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Flag</th>
+        <th>Region</th>
+        <th>Code</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tr th:each="eachregion : ${regionlist}">
+        <td th:text="${eachregion.ID}">334</td>
+        <td th:text="${eachregion.flag}">flag</td>
+        <td th:text="${eachregion.region}">region</td>
+        <td th:text="${eachregion.code}">code</td>
+        <td><a th:href="${'/region/' + eachregion.ID}">View</a> </td>
+        <td><a th:href="${'/region/' +eachregion.ID+'/edit'}">Edit</a> </td>
+        <td><a th:href="${'/region/' + eachregion.ID+'/delete'}">Delete</a> </td>
+    </tr>
+</table>
+    <div class="row">
+        <div class="col-sm-3">
+            <a th:href="@{'region/new'}">new region</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
