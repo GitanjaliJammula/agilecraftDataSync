@@ -19,6 +19,7 @@ public class Region {
     @Id
     @GeneratedValue
     private Integer ID;
+
     private String Flag;
     private String Region;
     private String Code;
