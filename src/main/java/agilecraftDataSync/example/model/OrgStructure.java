@@ -14,7 +14,7 @@ public class OrgStructure {
     private Integer CategoryID;
     @JsonProperty("CompanyCode")
     private String CompanyCode;
-    @JsonProperty("ostCenterName")
+    @JsonProperty("costCenterName")
     private String CostCenterName;
     @JsonProperty("ProductID")
     private Integer ProductID;
