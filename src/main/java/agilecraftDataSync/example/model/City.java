@@ -14,6 +14,13 @@ import javax.persistence.*;
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class City {
+    @Builder
+    public  City(Integer id,String Name,Integer RegionID){
+        this.Id=id;
+        this.Name=Name;
+        this.RegionID=RegionID;
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty("cityId")

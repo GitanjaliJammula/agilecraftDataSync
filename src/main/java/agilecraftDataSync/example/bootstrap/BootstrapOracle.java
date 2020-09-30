@@ -23,7 +23,7 @@ public class BootstrapOracle implements ApplicationListener<ContextRefreshedEven
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
           // loadRegions();
-           //loadCities();
+           loadCities();
     }
     public void loadRegions(){
         Region region=new Region();

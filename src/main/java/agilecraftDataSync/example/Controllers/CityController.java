@@ -25,7 +25,7 @@ public class CityController {
     }
 
     @RequestMapping({"cities","/cities"})
-    public  String getRegions(Model model){
+    public  String getCities(Model model){
         System.out.println("cities show");
         model.addAttribute("citieslist",cityService.findAll());
 
@@ -33,12 +33,12 @@ public class CityController {
     }
 
     @RequestMapping({"/city/{cityId}/delete"})
-    public  String regionDelete(@PathVariable String cityId, Model model){
+    public  String cityDelete(@PathVariable String cityId, Model model){
         cityService.deleteById(cityId);
         return "redirect:/cities";
     }
     @RequestMapping({"/city/{cityId}"})
-    public  String regionView(@PathVariable String cityId, Model model){
+    public  String cityView(@PathVariable String cityId, Model model){
         System.out.println("city view");
         model.addAttribute("onlyonecity",cityService.getById(cityId));
         return "cities/cityShow";
@@ -51,7 +51,7 @@ public class CityController {
         return "cities/citynew";
     }
     @PostMapping({"/city/new/create"})
-    public  String regionsave(@ModelAttribute("NewCity") City city){
+    public  String citysave(@ModelAttribute("NewCity") City city){
         System.out.println("city saving");
         //cityService.save(city);
         System.out.println("city saving ..........");
@@ -90,7 +90,7 @@ public class CityController {
         return "redirect:/cities";
     }
     @RequestMapping({"/city/{cityId}/edit"})
-    public  String regionNew( @PathVariable String cityId,Model model){
+    public  String cityNew( @PathVariable String cityId,Model model){
         System.out.println("city edit");
         Optional<City> city=cityService.getById(cityId);
         model.addAttribute("NewCity",city);
