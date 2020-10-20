@@ -6,6 +6,9 @@ import agilecraftDataSync.example.model.City;
 import agilecraftDataSync.example.model.Region;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,7 +54,13 @@ public class CityController {
         return "cities/citynew";
     }
     @PostMapping({"/city/new/create"})
-    public  String citysave(@ModelAttribute("NewCity") City city){
+    public  String citysave(@Validated @ModelAttribute("NewCity") City city, BindingResult bindingResult){
+    	System.out.println("cityname is missed or not ");
+    	if(bindingResult.hasErrors()) {
+    		System.out.println("cityname is missed");
+    		return "cities/citynew";
+    	}
+    	else {
         System.out.println("city saving");
         //cityService.save(city);
         System.out.println("city saving ..........");
@@ -88,6 +97,7 @@ public class CityController {
 
         //model.addAttribute("oneregion",regionService.getById(regionId));
         return "redirect:/cities";
+    	}
     }
     @RequestMapping({"/city/{cityId}/edit"})
     public  String cityNew( @PathVariable String cityId,Model model){

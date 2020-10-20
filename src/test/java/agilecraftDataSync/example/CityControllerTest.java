@@ -32,8 +32,8 @@ public class CityControllerTest {
     @BeforeEach
     void setUp() {
         cities=new HashSet<>();
-        cities.add(City.builder().id(2).Name("nrt").RegionID(4).build());
-        cities.add(City.builder().id(3).Name("guntur").RegionID(1).build());
+       // cities.add(City.builder().id(2).Name("nrt").RegionID(4).build());
+        //cities.add(City.builder().id(3).Name("guntur").RegionID(1).build());
         mockMvc = MockMvcBuilders
                 .standaloneSetup(cityController)
                 .build();
