@@ -19,5 +19,5 @@ public class UserSearchResponse {
     private UserFilter filter;
 
     @JsonProperty("Results")
-    private User[] results;
+    private Employee[] results;
 }

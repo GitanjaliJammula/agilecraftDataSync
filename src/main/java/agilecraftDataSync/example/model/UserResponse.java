@@ -16,7 +16,7 @@ public class UserResponse {
     @JsonProperty("TotalResults")
     private String TotalResults;
     @JsonProperty("Results")
-    private User[] Users;
+    private Employee[] Users;
 
 
 

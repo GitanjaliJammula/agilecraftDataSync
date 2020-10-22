@@ -35,6 +35,9 @@
             <div class="col-md-3 form-group">
                 <label>Region</label>
                 <input type="text" class="form-control" th:field="*{region}"/>
+                <span class="alert alert-danger"
+                      th:if="${#fields.hasErrors('region')}"
+                      th:errors="*{region}">name error</span>
             </div>
             </div>
             <div class="row">

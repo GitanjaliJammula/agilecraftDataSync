@@ -4,6 +4,7 @@ import agilecraftDataSync.example.Services.RegionService;
 import agilecraftDataSync.example.model.Region;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,7 +44,11 @@ public class RegionController {
         return "regions/regionnew";
     }
     @PostMapping({"/region/new/create"})
-    public  String regionsave(@ModelAttribute("newregion") Region region){
+    public  String regionsave(@ModelAttribute("newregion") Region region, BindingResult bindingResult){
+        if(bindingResult.hasErrors()) {
+            System.out.println("region name  is missed");
+            return "regions/regionnew";
+        }
         //System.out.println("region save");
         //Optional<Region> region=regionService.getById(regionId);
         regionService.save(region);
@@ -51,7 +56,11 @@ public class RegionController {
         return "redirect:/regions";
     }
     @RequestMapping({"/region/{regionId}/edit"})
-    public  String regionNew( @PathVariable String regionId,Model model){
+    public  String regionNew( @PathVariable String regionId,Model model,BindingResult bindingResult){
+        if(bindingResult.hasErrors()) {
+            System.out.println("region name  is missed");
+            return "regions/regionnew";
+        }
         System.out.println("region edit");
         Optional<Region> region=regionService.getById(regionId);
         model.addAttribute("newregion",region);
